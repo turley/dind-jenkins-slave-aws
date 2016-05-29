@@ -2,7 +2,7 @@
 
 Automated build available on [Docker Hub](https://hub.docker.com/r/turley/dind-jenkins-slave-aws/).
 
-This image is based on the [tehranian/dind-jenkins-slave](https://hub.docker.com/r/tehranian/dind-jenkins-slave/) docker image, with the addition of the [awscli](http://packages.ubuntu.com/trusty/admin/awscli) package and the [silinternational/ecs-deploy](https://github.com/silinternational/ecs-deploy) script.
+This image is based on the [tehranian/dind-jenkins-slave](https://hub.docker.com/r/tehranian/dind-jenkins-slave/) docker image, with the addition of [AWS CLI](http://aws.amazon.com/documentation/cli/) and the [silinternational/ecs-deploy](https://github.com/silinternational/ecs-deploy) script.
 
 The combination of these tools makes it relatively simple to build, test, push, and deploy (to Amazon ECS, using blue/green deployment) from Jenkins. 
 

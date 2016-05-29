@@ -10,9 +10,13 @@ RUN apt-get -q update &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
 # Install awscli package and silinternational/ecs-deploy script for ECS deployment
+WORKDIR /root
 RUN apt-get -q update && DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends \
-        awscli \
+        unzip \
+        python \
         jq &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
+    wget -O awscli-bundle.zip https://s3.amazonaws.com/aws-cli/awscli-bundle.zip && unzip awscli-bundle.zip &&\
+    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && rm -rf ./awscli-bundle* &&\
     wget -O /usr/local/bin/ecs-deploy https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy &&\
     chmod +x /usr/local/bin/ecs-deploy
